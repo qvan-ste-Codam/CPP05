@@ -20,7 +20,15 @@ PresidentialPardonForm& ::PresidentialPardonForm::operator=(
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const& executor) {
-    this->assertCanExecute(executor);
-    std::cout << this->target << "  has been pardoned by Zaphod Beeblebrox."
-              << std::endl;
+    try {
+        this->assertCanExecute(executor);
+        std::cout << this->target << "  has been pardoned by Zaphod Beeblebrox."
+                  << std::endl;
+        std::cout << executor.getName() << " executed " << this->getName()
+                  << std::endl;
+    } catch (std::runtime_error& ex) {
+        std::cerr << executor.getName()
+                  << " could not execute the form because " << ex.what()
+                  << std::endl;
+    }
 }
