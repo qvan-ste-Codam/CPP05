@@ -10,7 +10,7 @@ class RobotomyRequestForm : public AForm {
     ~RobotomyRequestForm() = default;
     RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 
-    void execute(Bureaucrat const &executor) override;   
+    void execute(Bureaucrat const &executor) override;
 };
 
 #endif
