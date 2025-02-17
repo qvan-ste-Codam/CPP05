@@ -12,9 +12,9 @@ int main() {
     auto intern = Intern{};
     auto bureaucrat = Bureaucrat{"Jan", 1};
 
-    for (size_t i = 0; i < NUM_OF_TESTS; i++) {
+    for (auto test : tests) {
         try {
-            AForm *form = intern.makeForm(tests[i], "bar");
+            AForm *form = intern.makeForm(test, "bar");
             form->beSigned(bureaucrat);
             form->execute(bureaucrat);
             delete form;

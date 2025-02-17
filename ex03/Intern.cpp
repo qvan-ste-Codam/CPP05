@@ -3,20 +3,27 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#define NUM_OF_FORMS 3
 
 Intern::Intern() {}
 
-// Intern::Intern(const Intern& other) {}
+// Nothing to copy for interns
+Intern::Intern(const Intern& other) { *this = other; }
 
-// Intern& ::Intern::operator=(const Intern & other) {}
+Intern& ::Intern::operator=(const Intern & other) {
+    if (this != &other) {
+        return *this;
+    }
+    return *this;
+}
 
 AForm* Intern::makeForm(const std::string& name,
                         const std::string& target) const {
-    const char* forms[3] = {"robotomy request", "presidential pardon",
-                            "shrubbery creation"};
+    const char* forms[NUM_OF_FORMS] = {
+        "robotomy request", "presidential pardon", "shrubbery creation"};
     size_t form = -1;
 
-    for (size_t i = 0; i < 3; i++) {
+    for (size_t i = 0; i < NUM_OF_FORMS; i++) {
         if (name == forms[i]) {
             form = i;
         }
